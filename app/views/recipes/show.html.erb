@@ -1,0 +1,31 @@
+<div class="row">
+  <%= image_tag @recipe.image.url, class: "col-md-5" %>
+  <div class="right-box col-md-7">
+    <h1 class="title"><%= @recipe.title %></h1>
+    <p><%= @recipe.ingredients %></p>
+  </div>
+</div>
+  <p><%= @recipe.procedures %></p>
+<hr>
+<h3>つくれぽ</h3>
+<div class="row">
+  <% @recipe.reports.each do |report| %>
+      <div class="col-md-2">
+        <%= link_to report.user.username, "/user/#{report.user.id}", class: "col-md-12" %>
+        <%= image_tag report.image, class: "report-img col-md-12" %>
+        <p class="col-md-12"><%= report.content %></p>
+      </div>
+  <% end %>
+</div>
+<% if current_user %>
+    <hr>
+    <h4>つくれぽを投稿する</h4>
+    <%= simple_form_for([@recipe, @report]) do |f| %>
+        <%= f.hidden_field :recipe_id, value: params[:recipe_id] %>
+        <%= f.label "コメント" %><br>
+        <%= f.text_area :content %><br>
+        <%= f.label "画像をアップロード" %><br>
+        <%= f.file_field :image %>
+        <%= f.submit "投稿" %>
+    <% end %>
+<% end %>
