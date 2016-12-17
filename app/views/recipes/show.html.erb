@@ -5,7 +5,10 @@
     <p><%= @recipe.ingredients %></p>
   </div>
 </div>
-  <p><%= @recipe.procedures %></p>
+<p><%= @recipe.procedures %></p>
+<% if current_user.id == @recipe.user_id %>
+    <%= link_to "削除", "z#{@recipe.id}", :method => :delete %>
+<% end %>
 <hr>
 <h3>つくれぽ</h3>
 <div class="row">

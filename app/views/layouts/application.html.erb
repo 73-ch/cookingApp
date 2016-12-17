@@ -32,10 +32,11 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="材料・料理名・ジャンルを検索">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-default">検索</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
+              <li><%= link_to "レシピを作成", new_recipe_path %></li>
             <li class="dropdown">
               <%= link_to current_user.username, "user/#{current_user.id}", class: "dropdown-toggle", remote: true, :data => {:toggle=>"dropdown", :role => "button"} %>
               <ul class="dropdown-menu">

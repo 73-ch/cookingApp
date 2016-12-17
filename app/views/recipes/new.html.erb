@@ -1,9 +1,13 @@
+<h1>レシピを作成</h1>
 <%= form_for(@recipe) do |f| %>
-    <%= f.text_field :title %>
+    title<br>
+    <%= f.text_field :title %><br>
     <%= f.label :image %><br>
-    <%= f.file_field :image %>
+    <%= f.file_field :image %><br>
     <%= f.hidden_field :image_cache %>
-    <%= f.text_area :procedures %>
-    <%= f.text_area :ingredients %>
+    材料<br>
+    <%= f.text_area :ingredients %><br>
+    作り方<br>
+    <%= f.text_area :procedures %><br>
     <%= f.submit "投稿" %>
 <% end %>
